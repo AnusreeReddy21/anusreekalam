@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anusree Kalam | Data Science Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --bg2: #f5f5f3;
+      --text: #1a1a1a;
+      --text2: #666660;
+      --border: rgba(0,0,0,0.12);
+      --accent: #185FA5;
+      --accent-bg: #E6F1FB;
+    }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2.5rem; border-bottom: 0.5px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 20px; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 14px; color: var(--text2); text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero { padding: 5rem 2.5rem 4rem; border-bottom: 0.5px solid var(--border); max-width: 900px; }
+    .hero-tag { font-size: 12px; color: var(--accent); background: var(--accent-bg); padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 1.2rem; }
+    .hero h1 { font-family: 'DM Serif Display', serif; font-size: 52px; font-weight: 400; line-height: 1.1; margin-bottom: 1.2rem; }
+    .hero h1 em { font-style: italic; color: var(--text2); }
+    .hero p { font-size: 16px; color: var(--text2); max-width: 580px; line-height: 1.75; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { background: var(--text); color: var(--bg); border: none; padding: 11px 22px; border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; display: inline-block; }
+    .btn-secondary { background: transparent; color: var(--text); border: 0.5px solid rgba(0,0,0,0.25); padding: 11px 22px; border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; display: inline-block; }
+    .stats { display: flex; gap: 3rem; margin-top: 3.5rem; flex-wrap: wrap; }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 34px; }
+    .stat-label { font-size: 12px; color: var(--text2); margin-top: 2px; }
+
+    /* SECTIONS */
+    section { padding: 3.5rem 2.5rem; border-bottom: 0.5px solid var(--border); }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 30px; font-weight: 400; margin-bottom: 2rem; }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; }
+    .project-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: 12px; padding: 1.4rem; transition: border-color 0.2s; }
+    .project-card:hover { border-color: rgba(0,0,0,0.35); }
+    .project-card.featured { border: 2px solid var(--accent); }
+    .featured-badge { font-size: 11px; background: var(--accent-bg); color: var(--accent); padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+    .project-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 18px; }
+    .icon-teal { background: #E1F5EE; }
+    .icon-purple { background: #EEEDFE; }
+    .icon-amber { background: #FAEEDA; }
+    .project-card h3 { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+    .project-card p { font-size: 13px; color: var(--text2); line-height: 1.65; margin-bottom: 14px; }
+    .tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .tag { font-size: 11px; padding: 3px 9px; border-radius: 20px; background: var(--bg2); color: var(--text2); border: 0.5px solid var(--border); }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item { display: flex; gap: 16px; }
+    .exp-dot-col { display: flex; flex-direction: column; align-items: center; padding-top: 5px; }
+    .exp-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--text); flex-shrink: 0; }
+    .exp-line { width: 1px; background: var(--border); flex: 1; margin-top: 6px; min-height: 30px; }
+    .exp-body { flex: 1; padding-bottom: 28px; }
+    .exp-role { font-size: 15px; font-weight: 500; }
+    .exp-company { font-size: 13px; color: var(--text2); margin-top: 2px; }
+    .exp-date { font-size: 11px; color: var(--text2); margin: 4px 0 10px; }
+    .exp-body p { font-size: 13px; color: var(--text2); line-height: 1.65; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+    .skill-group { background: var(--bg2); border-radius: 10px; padding: 1.1rem; }
+    .skill-group-title { font-size: 11px; font-weight: 500; color: var(--text2); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-pill { font-size: 12px; padding: 4px 10px; border-radius: 20px; background: var(--bg); border: 0.5px solid var(--border); color: var(--text); }
+
+    /* CONTACT */
+    .contact-inner { background: var(--bg2); border-radius: 14px; padding: 2.5rem; text-align: center; }
+    .contact-inner h2 { font-family: 'DM Serif Display', serif; font-size: 30px; font-weight: 400; margin-bottom: 8px; }
+    .contact-inner p { color: var(--text2); font-size: 14px; margin-bottom: 1.8rem; line-height: 1.6; }
+    .contact-links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .contact-link { font-size: 13px; color: var(--text2); text-decoration: none; border: 0.5px solid rgba(0,0,0,0.2); padding: 9px 18px; border-radius: 8px; background: var(--bg); transition: border-color 0.2s; }
+    .contact-link:hover { border-color: rgba(0,0,0,0.4); color: var(--text); }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--text2); }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 36px; }
+      nav { padding: 1rem 1.2rem; }
+      section, .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Anusree Kalam</div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Data Science &amp; Analytics</div>
+  <h1>Turning complex data into <em>meaningful insight</em></h1>
+  <p>Data Science Analyst with experience at TCS and a Master's in Advanced Data Analytics from the University of North Texas. I build predictive models, interactive dashboards, and data pipelines across Python, SQL, Power BI, Tableau, and cloud platforms.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="/cdn-cgi/l/email-protection#c8a9a6bdbbbaadada3a9a4a9a5f9f8f888afa5a9a1a4e6aba7a5">Get in touch</a>
+    <a class="btn-secondary" href="https://www.linkedin.com/in/anusree-kalam-32b3b4229/" target="_blank">View LinkedIn</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Years of experience</div></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-label">Published research paper</div></div>
+    <div class="stat"><div class="stat-num">96.7%</div><div class="stat-label">Model accuracy achieved</div></div>
+    <div class="stat"><div class="stat-num">MS</div><div class="stat-label">Advanced Data Analytics, UNT</div></div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title">Projects</div>
+  <div class="projects-grid">
+
+    <div class="project-card featured">
+      <div class="featured-badge">Published research</div>
+      <div class="project-icon icon-teal">🧠</div>
+      <h3>Deep Learning Crash Risk Prediction</h3>
+      <p>Published peer-reviewed model using TensorFlow and PyTorch achieving 96.7% accuracy in real-time crash risk and severity classification from large-scale traffic data. Visualised findings in Tableau and Power BI.</p>
+      <div class="tags">
+        <span class="tag">TensorFlow</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">Python</span>
+        <span class="tag">Spark</span>
+        <span class="tag">Tableau</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon icon-purple">💳</div>
+      <h3>Loan Approval Prediction</h3>
+      <p>Analysed financial data using Python, SQL, and Power BI to identify key loan approval factors. Built and compared Logistic Regression, SVM, and Random Forest models for high-accuracy classification.</p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Scikit-learn</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon icon-amber">📊</div>
+      <h3>Interactive Sales Performance Dashboard</h3>
+      <p>Designed a Tableau dashboard tracking sales by region, product, and customer segment. Cleaned and transformed underlying data with SQL and Excel to enable accurate trend analysis and revenue forecasting.</p>
+      <div class="tags">
+        <span class="tag">Tableau</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Excel</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-title">Experience</div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-dot-col"><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-body">
+        <div class="exp-role">Software Engineer – Data Scientist</div>
+        <div class="exp-company">Resonate Technologies LLC, USA</div>
+        <div class="exp-date">February 2026 – Present</div>
+        <p>Developing and deploying ML and deep learning models using Python, Scikit-learn, TensorFlow, and PyTorch. Building automated feature engineering pipelines and monitoring production models via Spark and cloud platforms.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot-col"><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-body">
+        <div class="exp-role">Assistant System Engineer</div>
+        <div class="exp-company">Tata Consultancy Services (TCS)</div>
+        <div class="exp-date">March 2022 – December 2023</div>
+        <p>Analysed enterprise datasets with Python and SQL for business reporting. Built predictive analytics integrations, real-time dashboards in Power BI and Tableau, and performed EDA and feature engineering across cross-functional teams.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot-col"><div class="exp-dot"></div></div>
+      <div class="exp-body">
+        <div class="exp-role">Data Analytics Intern</div>
+        <div class="exp-company">VNR Vignana Jyothi Institute of Engineering and Technology</div>
+        <div class="exp-date">May 2021 – February 2022</div>
+        <p>Executed full ETL lifecycle using Python, SQL, and Power BI. Deployed predictive analytics system using Linear Regression, Random Forest, and K-Means. Automated dashboards that reduced manual analysis effort by over 40%.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-title">Skills</div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">Bash</span>
+        <span class="skill-pill">SAS</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">ML & Analytics</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Scikit-learn</span>
+        <span class="skill-pill">TensorFlow</span>
+        <span class="skill-pill">PyTorch</span>
+        <span class="skill-pill">Pandas</span>
+        <span class="skill-pill">NumPy</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Visualisation</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Power BI</span>
+        <span class="skill-pill">Tableau</span>
+        <span class="skill-pill">Matplotlib</span>
+        <span class="skill-pill">Seaborn</span>
+        <span class="skill-pill">Excel</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud & Big Data</div>
+      <div class="skill-pills">
+        <span class="skill-pill">AWS</span>
+        <span class="skill-pill">GCP</span>
+        <span class="skill-pill">Snowflake</span>
+        <span class="skill-pill">Spark</span>
+        <span class="skill-pill">Hadoop</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Databases</div>
+      <div class="skill-pills">
+        <span class="skill-pill">PostgreSQL</span>
+        <span class="skill-pill">MySQL</span>
+        <span class="skill-pill">BigQuery</span>
+        <span class="skill-pill">MongoDB</span>
+        <span class="skill-pill">Redshift</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Platforms</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Delta Lake</span>
+        <span class="skill-pill">Snowflake</span>
+        <span class="skill-pill">Sybase</span>
+        <span class="skill-pill">UDB DB2</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <h2>Open to opportunities</h2>
+    <p>Available for Data Scientist, Data Analyst, and Predictive Analytics roles.<br>Based in Denton, TX — open to remote and hybrid positions.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="/cdn-cgi/l/email-protection#0f6e617a7c7d6a6a646e636e623e3f3f4f68626e6663216c6062"><span class="__cf_email__" data-cfemail="34555a41474651515f55585559050404745359555d581a575b59">[email&#160;protected]</span></a>
+      <a class="contact-link" href="https://www.linkedin.com/in/anusree-kalam-32b3b4229/" target="_blank">LinkedIn</a>
+    
